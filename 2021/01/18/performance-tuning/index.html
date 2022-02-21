@@ -1,0 +1,1199 @@
+<!DOCTYPE HTML>
+<html lang="jp">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="パフォーマンス, マトリクス">
+    <meta name="description" content="パフォーマンスよく性能とも言います。本文は一概に性能に統一します。
+性能とはITエンジニアとして、性能問題に悩まった場面が少なくないでしょう。ある場合に、地獄に陥るような厄介にぶつかった時、どうすればいいのか興味がある人がたくさんいると思い">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>パフォーマンス | マトリクス</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">マトリクス</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>ホーム</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>タグ</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分類</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>アーカイブ</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>自己紹介</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="検索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">マトリクス</div>
+        <div class="logo-desc">
+            
+            フルスタックしているITエンジニア
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			ホーム
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			タグ
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分類
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			アーカイブ
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			自己紹介
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">パフォーマンス</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9/">
+                                <span class="chip bg-color">パフォーマンス</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%80%A7%E8%83%BD/">
+                                <span class="chip bg-color">性能</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/">
+                                <span class="chip bg-color">チューニング</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%A0/">
+                                <span class="chip bg-color">レスポンスタイム</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%A2%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0/">
+                                <span class="chip bg-color">ターンアラウンドタイム</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%97%E3%83%83%E3%83%88/">
+                                <span class="chip bg-color">スループット</span>
+                            </a>
+                        
+                            <a href="/tags/TPS/">
+                                <span class="chip bg-color">TPS</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%83%9C%E3%83%88%E3%83%AB%E3%83%8D%E3%83%83%E3%82%AF/">
+                                <span class="chip bg-color">ボトルネック</span>
+                            </a>
+                        
+                            <a href="/tags/CDN/">
+                                <span class="chip bg-color">CDN</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%83%9E%E3%83%AB%E3%83%81%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89/">
+                                <span class="chip bg-color">マルチスレッド</span>
+                            </a>
+                        
+                            <a href="/tags/Multi-Thread/">
+                                <span class="chip bg-color">Multi Thread</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88/">
+                                <span class="chip bg-color">スケールアウト</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97/">
+                                <span class="chip bg-color">スケールアップ</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%B2%A0%E8%8D%B7%E5%88%86%E6%95%A3/">
+                                <span class="chip bg-color">負荷分散</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5/">
+                                <span class="chip bg-color">キャッシュ</span>
+                            </a>
+                        
+                            <a href="/tags/Master-Slave/">
+                                <span class="chip bg-color">Master /Slave</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%83%90%E3%83%AB%E3%82%AF/">
+                                <span class="chip bg-color">バルク</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F/">
+                                <span class="chip bg-color">非同期</span>
+                            </a>
+                        
+                            <a href="/tags/%E3%82%AD%E3%83%A5%E3%83%BC/">
+                                <span class="chip bg-color">キュー</span>
+                            </a>
+                        
+                            <a href="/tags/Queue/">
+                                <span class="chip bg-color">Queue</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6/" class="post-category">
+                                ノウハウ
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>初回発表日:&nbsp;&nbsp;
+                    2021-01-18
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="パフォーマンス"><a href="#パフォーマンス" class="headerlink" title="パフォーマンス"></a>パフォーマンス</h1><p>よく性能とも言います。本文は一概に性能に統一します。</p>
+<h2 id="性能とは"><a href="#性能とは" class="headerlink" title="性能とは"></a>性能とは</h2><p>ITエンジニアとして、性能問題に悩まった場面が少なくないでしょう。<br>ある場合に、地獄に陥るような厄介にぶつかった時、どうすればいいのか興味がある人がたくさんいると思いますので、性能の話題を少し説明させて頂きます。<br>本題に入る前に、まずは一つの質問を提出致します。<br>性能問題とは、一体何を指しますか。<br>普通的に考えると、アプリ実行が遅かったり、機器負荷が重かったり、レスポンス時間が長かったりするものでしょう。でも深く考えると、性能の評価は実の需要に離れないと思います。<br>例にすると、証券売買システムと普通のウェブシステムとは、性能需要のレベルが全然違うでしょう。</p>
+<h2 id="性能目標の仕組"><a href="#性能目標の仕組" class="headerlink" title="性能目標の仕組"></a>性能目標の仕組</h2><p>厳密にいえば、この性能需要を性能目標と言えます。<br>では、性能目標とはなんですか。</p>
+<p>性能目標、一般的にプロダクトを参画する時、要件定義フェーズ時非機能要件として、性能目標を定めています。<br>主な性能評価指標は下記のように分解できます。</p>
+<ul>
+<li>レスポンスタイム</li>
+<li>ターンアラウンドタイム</li>
+<li>スループット</li>
+<li>TPS（１秒間に処理できるトランザクション数）</li>
+</ul>
+<p>なお、性能指標を評価するために、前提条件が不可欠ないと思います。<br>例えば、同時にログイン利用しているユーザー数とか、DBの主なテーブルに格納するレコード数とかなど。違う前提条件は性能指標の確定は根なしでしょう。<br>だから要件定義には、前提条件を書かなければならないです。</p>
+<h2 id="性能目標を達成する手法"><a href="#性能目標を達成する手法" class="headerlink" title="性能目標を達成する手法"></a>性能目標を達成する手法</h2><p>主な性能指標を決めた後、アーキテクチャより技術スタックを選別します。</p>
+<p>典型的なWEBシステムを例にして説明しましょう。<br>ブラウザからサーバーまでの通信時間、サーバーにリクエストを受付してから、必要な処理した後DBに渡すまで所要の時間、<br>DB処理所要の時間、DB処理完了した後、結果よりレスポンスを生成する所要の時間、生成されたレスポンスをブラウザまで通信所要の時間など。<br>なお、生産環境に障害対処、証跡記録のためログの書込みに所要の時間も考慮しなければならないです。</p>
+<p>この段階によく発生するのはトレードオフ（trade-off）です。<br>開発フェーズ、ランニングフェーズのコストを考えなければならないです。<br>たとえば開発段階に技術者獲得難易度とか、技術ことの生産性とか。ランニングフェーズに、クラウドサービスのコストとか。</p>
+<h2 id="性能問題の解決手法"><a href="#性能問題の解決手法" class="headerlink" title="性能問題の解決手法"></a>性能問題の解決手法</h2><p>次に、性能に問題が発生すると、どのように解決すればいいのか説明していきます。</p>
+<h3 id="ボトルネックの特定"><a href="#ボトルネックの特定" class="headerlink" title="ボトルネックの特定"></a>ボトルネックの特定</h3><p>性能問題を解決するために、一番重要なものはボトルネックの特定です。<br>ボトルネックを特定できれば、半分の性能問題を解決されたといっても過言ではありません。<br>なぜなら、ボトルネックを特定しなければ、性能問題を解消できる対策を打てないでしょう。<br>では、どうすればボトルネックを特定できるか。筆者の経験より、ログを参照することが一番重要だと思います。<br>ログよりネットワーク通信時間、本処理を入る前に認証・認可の時間、アプリの処理時間、DB処理時間が見えます。</p>
+<h3 id="ボトルネックの消去"><a href="#ボトルネックの消去" class="headerlink" title="ボトルネックの消去"></a>ボトルネックの消去</h3><p>分野ことに対策を説明しましょう。</p>
+<h4 id="ネットワーク通信"><a href="#ネットワーク通信" class="headerlink" title="ネットワーク通信"></a>ネットワーク通信</h4><ul>
+<li>CDNの使用</li>
+<li>クラウドのリージョンの増設＆調整</li>
+<li>ゾーンの増設＆調整</li>
+</ul>
+<h4 id="アプリ側問題"><a href="#アプリ側問題" class="headerlink" title="アプリ側問題"></a>アプリ側問題</h4><ul>
+<li>処理並行化検討（マルチスレッドなど）</li>
+<li>スケールアウト（負荷分散）</li>
+<li>スケールアップ</li>
+</ul>
+<h4 id="DB側の問題"><a href="#DB側の問題" class="headerlink" title="DB側の問題"></a>DB側の問題</h4><ul>
+<li>INDEX周り</li>
+<li> キャッシュの導入</li>
+<li>Master /Slaveの導入、読み書きの分離</li>
+<li>散らしの処理をバルク処理に変換（一般的にアプリの改修も伴う）</li>
+</ul>
+<h4 id="その他"><a href="#その他" class="headerlink" title="その他"></a>その他</h4><ul>
+<li>業務上不急の処理を切り出し、非同期処理させる</li>
+<li>キュー（Queue）を導入して、集中処理から分散処理へ変換する</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        WriteBy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">kevin.kan</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章リンク:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://kevin-hans.github.io/2021/01/18/performance-tuning/">https://kevin-hans.github.io/2021/01/18/performance-tuning/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        CopyRight宣言:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本サイトに掲載された内容は下記に従う
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    著作権。
+                    <a href="/about" target="_blank">kevin.kan</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>コピー成功</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">査読</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9/">
+                                    <span class="chip bg-color">パフォーマンス</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%80%A7%E8%83%BD/">
+                                    <span class="chip bg-color">性能</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/">
+                                    <span class="chip bg-color">チューニング</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%A0/">
+                                    <span class="chip bg-color">レスポンスタイム</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%A2%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0/">
+                                    <span class="chip bg-color">ターンアラウンドタイム</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%97%E3%83%83%E3%83%88/">
+                                    <span class="chip bg-color">スループット</span>
+                                </a>
+                            
+                                <a href="/tags/TPS/">
+                                    <span class="chip bg-color">TPS</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%83%9C%E3%83%88%E3%83%AB%E3%83%8D%E3%83%83%E3%82%AF/">
+                                    <span class="chip bg-color">ボトルネック</span>
+                                </a>
+                            
+                                <a href="/tags/CDN/">
+                                    <span class="chip bg-color">CDN</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%83%9E%E3%83%AB%E3%83%81%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89/">
+                                    <span class="chip bg-color">マルチスレッド</span>
+                                </a>
+                            
+                                <a href="/tags/Multi-Thread/">
+                                    <span class="chip bg-color">Multi Thread</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88/">
+                                    <span class="chip bg-color">スケールアウト</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%83%E3%83%97/">
+                                    <span class="chip bg-color">スケールアップ</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%B2%A0%E8%8D%B7%E5%88%86%E6%95%A3/">
+                                    <span class="chip bg-color">負荷分散</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5/">
+                                    <span class="chip bg-color">キャッシュ</span>
+                                </a>
+                            
+                                <a href="/tags/Master-Slave/">
+                                    <span class="chip bg-color">Master /Slave</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%83%90%E3%83%AB%E3%82%AF/">
+                                    <span class="chip bg-color">バルク</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F/">
+                                    <span class="chip bg-color">非同期</span>
+                                </a>
+                            
+                                <a href="/tags/%E3%82%AD%E3%83%A5%E3%83%BC/">
+                                    <span class="chip bg-color">キュー</span>
+                                </a>
+                            
+                                <a href="/tags/Queue/">
+                                    <span class="chip bg-color">Queue</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;前へ</div>
+            <div class="card">
+                <a href="/2021/10/05/iframe-in-html/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="iframe-in-html">
+                        
+                        <span class="card-title">iframe-in-html</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-10-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/FrontEnd/" class="post-category">
+                                    FrontEnd
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/iframe/">
+                        <span class="chip bg-color">iframe</span>
+                    </a>
+                    
+                    <a href="/tags/html/">
+                        <span class="chip bg-color">html</span>
+                    </a>
+                    
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                次へ&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/08/10/experience-in-the-past-source-step-count/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="なぜソースファイルおよびメソッドの規模を適当にコントロールするか">
+                        
+                        <span class="card-title">なぜソースファイルおよびメソッドの規模を適当にコントロールするか</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6/" class="post-category">
+                                    ノウハウ
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E3%82%BD%E3%83%BC%E3%82%B9%E8%A6%8F%E6%A8%A1/">
+                        <span class="chip bg-color">ソース規模</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%93%81%E8%B3%AA/">
+                        <span class="chip bg-color">品質</span>
+                    </a>
+                    
+                    <a href="/tags/%E3%83%87%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89/">
+                        <span class="chip bg-color">デグレード</span>
+                    </a>
+                    
+                    <a href="/tags/Sonarqube/">
+                        <span class="chip bg-color">Sonarqube</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目次</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">kevin.kan</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            <!-- 
+            
+            
+            
+            <br> -->
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:kevin.kansin@gmail.com" class="tooltipped" target="_blank" data-tooltip="メール" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;検索</span>
+            <input type="search" id="searchInput" name="s" placeholder="キーワードを入力してください。"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
