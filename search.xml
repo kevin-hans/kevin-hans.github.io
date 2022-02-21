@@ -240,13 +240,13 @@
       
         <tags>
             
+            <tag> java </tag>
+            
             <tag> lambda </tag>
             
             <tag> FunctionalInterface </tag>
             
             <tag> double colon </tag>
-            
-            <tag> java </tag>
             
         </tags>
       
@@ -271,13 +271,13 @@
       
         <tags>
             
+            <tag> java </tag>
+            
             <tag> lambda </tag>
             
             <tag> FunctionalInterface </tag>
             
             <tag> Anonymous Class </tag>
-            
-            <tag> java </tag>
             
         </tags>
       
