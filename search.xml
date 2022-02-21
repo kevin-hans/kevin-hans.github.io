@@ -20,6 +20,8 @@
       
         <tags>
             
+            <tag> javascript </tag>
+            
             <tag> react </tag>
             
             <tag> vue </tag>
@@ -222,7 +224,7 @@
     
     
     <entry>
-      <title>ダブルコロン(::)演算子とラムダ式</title>
+      <title>Javaダブルコロン(::)演算子とラムダ式</title>
       <link href="/2018/10/23/java-double-colon-operator/"/>
       <url>/2018/10/23/java-double-colon-operator/</url>
       
@@ -231,7 +233,7 @@
       
       <categories>
           
-          <category> 言語 </category>
+          <category> BackEnd </category>
           
       </categories>
       
@@ -244,6 +246,8 @@
             
             <tag> double colon </tag>
             
+            <tag> java </tag>
+            
         </tags>
       
     </entry>
@@ -251,7 +255,7 @@
     
     
     <entry>
-      <title>ラムダ式（lambda）</title>
+      <title>Javaラムダ式（lambda）</title>
       <link href="/2018/10/16/java-lambda/"/>
       <url>/2018/10/16/java-lambda/</url>
       
@@ -260,7 +264,7 @@
       
       <categories>
           
-          <category> 言語 </category>
+          <category> BackEnd </category>
           
       </categories>
       
@@ -272,6 +276,8 @@
             <tag> FunctionalInterface </tag>
             
             <tag> Anonymous Class </tag>
+            
+            <tag> java </tag>
             
         </tags>
       
