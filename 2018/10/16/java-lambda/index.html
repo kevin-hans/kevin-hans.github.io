@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Javaラムダ式（lambda）, マトリクス">
-    <meta name="description" content="ラムダ式（lambda）従来には、メソッドを呼び出す時、引き渡すのは一律データでしょう。ラムダ式を利用して、コードもデータのように扱えました。すなわちデータ自身だけではなく、データの処理ロジックもデータと扱えました。
+    <meta name="description" content="ラムダ式（lambda）とは
+Lambdas let you treat code as data.この革新よりいろいろな便利をもたらしました。
 
-Lambdas le">
+従来には、メソッドを呼び出す時、引き渡すのは一律データでしょう。ラムダ式のおかげで、引き渡さ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -386,11 +387,11 @@ Lambdas le">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ラムダ式（lambda）"><a href="#ラムダ式（lambda）" class="headerlink" title="ラムダ式（lambda）"></a>ラムダ式（lambda）</h2><p>従来には、メソッドを呼び出す時、引き渡すのは一律データでしょう。ラムダ式を利用して、コードもデータのように扱えました。すなわちデータ自身だけではなく、データの処理ロジックもデータと扱えました。</p>
-<blockquote>
+                <h3 id="ラムダ式（lambda）とは"><a href="#ラムダ式（lambda）とは" class="headerlink" title="ラムダ式（lambda）とは"></a>ラムダ式（lambda）とは</h3><blockquote>
 <p>Lambdas let you treat code as data.<br>この革新よりいろいろな便利をもたらしました。</p>
 </blockquote>
-<p>ラムダ式は事実的に<br>ラムダ式（lambda）は、匿名クラスの簡素化書き方です。この匿名クラスは機能インターフェース（FunctionalInterface）として知られています。</p>
+<p>従来には、メソッドを呼び出す時、引き渡すのは一律データでしょう。<br>ラムダ式のおかげで、引き渡されたものはデータに限定ではなく、コードもデータのように扱えました。すなわちデータの処理ロジックもデータのようにと扱えるになりました。</p>
+<h3 id="ラムダ式（lambda）誕生する前に"><a href="#ラムダ式（lambda）誕生する前に" class="headerlink" title="ラムダ式（lambda）誕生する前に"></a>ラムダ式（lambda）誕生する前に</h3><p>ラムダ式（lambda）は、匿名クラスの簡素化書き方です。この匿名クラスは機能インターフェース（FunctionalInterface）として知られています。</p>
 <p> 例を挙げて説明しましょう。<br> 機能インターフェース（FunctionalInterface）匿名クラス例<br> <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"node"</span><span class="token punctuation">,</span> <span class="token string">"java"</span><span class="token punctuation">,</span> <span class="token string">"python"</span><span class="token punctuation">,</span> <span class="token string">"ruby"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">new</span>  <span class="token class-name">Consumer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
 	<span class="token comment">// anonymous class  </span>
@@ -399,14 +400,14 @@ list<span class="token punctuation">.</span><span class="token function">forEach
 		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 	<span class="token punctuation">&#125;</span> 
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<p>今ラムダ式に書き換えます。</p>
+<h3 id="ラムダ式（lambda）の例"><a href="#ラムダ式（lambda）の例" class="headerlink" title="ラムダ式（lambda）の例"></a>ラムダ式（lambda）の例</h3><p>今ラムダ式に書き換えます。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"node"</span><span class="token punctuation">,</span> <span class="token string">"java"</span><span class="token punctuation">,</span> <span class="token string">"python"</span><span class="token punctuation">,</span> <span class="token string">"ruby"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>str <span class="token operator">-></span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"node"</span><span class="token punctuation">,</span> <span class="token string">"java"</span><span class="token punctuation">,</span> <span class="token string">"python"</span><span class="token punctuation">,</span> <span class="token string">"ruby"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>簡単かつ読みやすくになるでしょうか。</p>
-<p>でも、ここに説明しなければならないのはラムダ式は<br>機能インターフェース（FunctionalInterface）を完全に置き換えるわけではありません。</p>
-<p>機能インターフェースに一つメソッドしかないの場合、ラムダ式に書き換えますが、二つ以上のメソッドがある場合、機能インターフェース（FunctionalInterface）を利用しなければならないです。<br>かつ、機能インターフェース（FunctionalInterface）はインターフェースの一種として、継承などのJAVA特性を利用して別の効果が期待できると思います。</p>
+<h3 id="ラムダ式（lambda）と機能インターフェース（FunctionalInterface）"><a href="#ラムダ式（lambda）と機能インターフェース（FunctionalInterface）" class="headerlink" title="ラムダ式（lambda）と機能インターフェース（FunctionalInterface）"></a>ラムダ式（lambda）と機能インターフェース（FunctionalInterface）</h3><p>でも、ここに説明しなければならないのはラムダ式は<br>機能インターフェース（FunctionalInterface）を完全に置き換えるわけではありません。</p>
+<p>機能インターフェースに一つメソッドしかないの場合、ラムダ式に書き換えますが、<br>二つ以上のメソッドがある場合、機能インターフェース（FunctionalInterface）を利用しなければならないです。<br>かつ、機能インターフェース（FunctionalInterface）はインターフェースの一種として、継承などのJAVA特性を利用して別の効果が期待できると思います。</p>
 <h3 id="おまけ-ラムダ式の進化版ダブルコロン"><a href="#おまけ-ラムダ式の進化版ダブルコロン" class="headerlink" title="おまけ-ラムダ式の進化版ダブルコロン(::)"></a>おまけ-ラムダ式の進化版ダブルコロン(::)</h3><p>軽く触りますが、もっと簡単な書き方があります。<br>それはダブルコロン(::)です。<br>例を下記のように示されましたが、興味があれば、別の文章に移ってください。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"node"</span><span class="token punctuation">,</span> <span class="token string">"java"</span><span class="token punctuation">,</span> <span class="token string">"python"</span><span class="token punctuation">,</span> <span class="token string">"ruby"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>

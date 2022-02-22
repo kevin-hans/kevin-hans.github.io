@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Javaダブルコロン(::)演算子とラムダ式, マトリクス">
-    <meta name="description" content="ダブルコロン(::)演算子とラムダ式二重コロン(::)演算子とも言えます。実質はラムダ式の一種であると思います。伝統的なラムダ式定義よりもっと簡単になる一方で、既存の資産もよく生かすできるようになりました。これは最大のメリットだと言っても過">
+    <meta name="description" content="二重コロン(::)演算子とは二重コロン(::)演算子とも言えます。実質はラムダ式の一種であると思います。伝統的なラムダ式定義よりもっと簡単になる一方で、既存の資産もよく生かすできるようになりました。これは最大のメリットだと言っても過言ではな">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,8 +384,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ダブルコロン-演算子とラムダ式"><a href="#ダブルコロン-演算子とラムダ式" class="headerlink" title="ダブルコロン(::)演算子とラムダ式"></a>ダブルコロン(::)演算子とラムダ式</h2><p>二重コロン(::)演算子とも言えます。実質はラムダ式の一種であると思います。<br>伝統的なラムダ式定義よりもっと簡単になる一方で、既存の資産もよく生かすできるようになりました。これは最大のメリットだと言っても過言ではないです。</p>
-<h3 id="ラムダ式の定義方法"><a href="#ラムダ式の定義方法" class="headerlink" title="ラムダ式の定義方法"></a>ラムダ式の定義方法</h3><p>普通にはラムダ式を下記のように定義されています。</p>
+                <h3 id="二重コロン-演算子とは"><a href="#二重コロン-演算子とは" class="headerlink" title="二重コロン(::)演算子とは"></a>二重コロン(::)演算子とは</h3><p>二重コロン(::)演算子とも言えます。実質はラムダ式の一種であると思います。<br>伝統的なラムダ式定義よりもっと簡単になる一方で、既存の資産もよく生かすできるようになりました。これは最大のメリットだと言っても過言ではないです。</p>
+<h3 id="ラムダ式の定義方法を復習"><a href="#ラムダ式の定義方法を復習" class="headerlink" title="ラムダ式の定義方法を復習"></a>ラムダ式の定義方法を復習</h3><p>普通にはラムダ式を下記のように定義されています。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">(</span>引数<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>処理<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>例：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">s <span class="token operator">-></span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -394,7 +394,9 @@
 
 <h3 id="ダブルコロン-演算子を利用したら"><a href="#ダブルコロン-演算子を利用したら" class="headerlink" title="ダブルコロン(::)演算子を利用したら"></a>ダブルコロン(::)演算子を利用したら</h3><p>ダブルコロン(::)演算子を利用したら、簡単に既に定義していたクラスのメソッドをラムダ式へ変換できます。<br>ダブルコロン演算子は下記５種類があります。</p>
 <h4 id="クラスの静的メソッド"><a href="#クラスの静的メソッド" class="headerlink" title="クラスの静的メソッド"></a>クラスの静的メソッド</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ClassName</span><span class="token operator">::</span><span class="token function">staticMethodName</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="クラスのインスタンスメソッド"><a href="#クラスのインスタンスメソッド" class="headerlink" title="クラスのインスタンスメソッド"></a>クラスのインスタンスメソッド</h4><p> 構文<br> <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ClassName</span><span class="token operator">::</span><span class="token function">instanceMethodName</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></p>
+<h4 id="クラスのインスタンスメソッド"><a href="#クラスのインスタンスメソッド" class="headerlink" title="クラスのインスタンスメソッド"></a>クラスのインスタンスメソッド</h4><p>構文</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ClassName</span><span class="token operator">::</span><span class="token function">instanceMethodName</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="インスタンスメソッド"><a href="#インスタンスメソッド" class="headerlink" title="インスタンスメソッド"></a>インスタンスメソッド</h4><p>構文</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">object<span class="token operator">::</span><span class="token function">instanceMethodName</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -405,7 +407,7 @@
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">（<span class="token class-name">ClassName</span> <span class="token operator">::</span> <span class="token keyword">new</span>）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p>参考：<br><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-8-double-colon-operator">The Double Colon Operator in Java 8</a><br><a target="_blank" rel="noopener" href="https://mkyong.com/java8/java-8-method-references-double-colon-operator/">Java 8 method references, double colon (::) operator</a></p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-8-double-colon-operator">The Double Colon Operator in Java 8</a><br><a target="_blank" rel="noopener" href="https://mkyong.com/java8/java-8-method-references-double-colon-operator/">Java 8 method references, double colon (::) operator</a></p>
 
                 
             </div>
