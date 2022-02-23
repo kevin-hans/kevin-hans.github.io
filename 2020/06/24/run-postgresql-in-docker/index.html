@@ -4,11 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="トラブルシューティングによく使われるGIT操作, マトリクス">
-    <meta name="description" content="シーンことに使えるコマンドを紹介させて頂きます。
-バグをどなたがどのコミットで取り込んだかgit blame -- &amp;lt;path&amp;gt;
+    <meta name="keywords" content="DockerとFlywayを利用して開発環境用Postgresqlを迅速に立ち上げる方法, マトリクス">
+    <meta name="description" content="背景開発環境構築する時、DB構築が不可欠ではないでしょうか。どのように迅速的にDB構築できるか今紹介いたします。
+必要な技術スタッフ
+Docker DBを立ち上げる
+Flyway データ初期化
 
-あるソースに加えたコミットの変更内容を確認git diff &amp;lt;SHA&amp;gt; -- &amp;lt">
+DockerでDBを立ち上げるdocker-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>トラブルシューティングによく使われるGIT操作 | マトリクス</title>
+    <title>DockerとFlywayを利用して開発環境用Postgresqlを迅速に立ち上げる方法 | マトリクス</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -205,12 +207,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">トラブルシューティングによく使われるGIT操作</h1>
+                    <h1 class="description center-align post-title">DockerとFlywayを利用して開発環境用Postgresqlを迅速に立ち上げる方法</h1>
                 </div>
             </div>
         </div>
@@ -326,8 +328,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
+                            </a>
+                        
+                            <a href="/tags/docker-compose/">
+                                <span class="chip bg-color">docker-compose</span>
+                            </a>
+                        
+                            <a href="/tags/flyway/">
+                                <span class="chip bg-color">flyway</span>
                             </a>
                         
                     </div>
@@ -351,7 +361,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>初回発表日:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-06-24
                 </div>
                 
 
@@ -375,19 +385,54 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>シーンことに使えるコマンドを紹介させて頂きます。</p>
-<h3 id="バグをどなたがどのコミットで取り込んだか"><a href="#バグをどなたがどのコミットで取り込んだか" class="headerlink" title="バグをどなたがどのコミットで取り込んだか"></a>バグをどなたがどのコミットで取り込んだか</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git blame -- &lt;path&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>開発環境構築する時、DB構築が不可欠ではないでしょうか。<br>どのように迅速的にDB構築できるか今紹介いたします。</p>
+<h4 id="必要な技術スタッフ"><a href="#必要な技術スタッフ" class="headerlink" title="必要な技術スタッフ"></a>必要な技術スタッフ</h4><ul>
+<li>Docker DBを立ち上げる</li>
+<li>Flyway データ初期化</li>
+</ul>
+<h4 id="DockerでDBを立ち上げる"><a href="#DockerでDBを立ち上げる" class="headerlink" title="DockerでDBを立ち上げる"></a>DockerでDBを立ち上げる</h4><h5 id="docker-compose-postgres-xml"><a href="#docker-compose-postgres-xml" class="headerlink" title="docker-compose-postgres.xml"></a>docker-compose-postgres.xml</h5><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.4'</span>
 
-<h3 id="あるソースに加えたコミットの変更内容を確認"><a href="#あるソースに加えたコミットの変更内容を確認" class="headerlink" title="あるソースに加えたコミットの変更内容を確認"></a>あるソースに加えたコミットの変更内容を確認</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git diff &lt;SHA&gt; -- &lt;path&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">postgre</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres
+<span class="token comment">#    volumes:</span>
+<span class="token comment">#      - ./db-data/data:/var/lib/postgresql/data</span>
+<span class="token comment">#      - ./db-data/log:/var/log/postgresql</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> user
+      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> pass
+      <span class="token key atrule">POSTGRES_DB</span><span class="token punctuation">:</span> dbname
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 5432<span class="token punctuation">:</span><span class="token number">5432</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="あるコミットが影響するソース一覧"><a href="#あるコミットが影響するソース一覧" class="headerlink" title="あるコミットが影響するソース一覧"></a>あるコミットが影響するソース一覧</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git show --pretty&#x3D;&quot;&quot; --name-only &lt;SHA&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="FlywayでDBにデータを初期化"><a href="#FlywayでDBにデータを初期化" class="headerlink" title="FlywayでDBにデータを初期化"></a>FlywayでDBにデータを初期化</h4><h5 id="docker-compose-postgres-xml-続き"><a href="#docker-compose-postgres-xml-続き" class="headerlink" title="docker-compose-postgres.xml(続き)"></a>docker-compose-postgres.xml(続き)</h5><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">  <span class="token key atrule">flyway</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> flyway/flyway
+<span class="token comment">#    command: info</span>
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">-</span>url=jdbc<span class="token punctuation">:</span>postgresql<span class="token punctuation">:</span>//postgre/dbname <span class="token punctuation">-</span>schemas=xshema <span class="token punctuation">-</span>user=user <span class="token punctuation">-</span>password=pass <span class="token punctuation">-</span>connectRetries=60 <span class="token punctuation">-</span>validateOnMigrate=false migrate
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./postgres<span class="token punctuation">:</span>/flyway/sql
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> postgre<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="あるブランチにあるコミット一覧"><a href="#あるブランチにあるコミット一覧" class="headerlink" title="あるブランチにあるコミット一覧"></a>あるブランチにあるコミット一覧</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git log --no-merges &lt;branch name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3 id="あるブランチにある人が提出したコミット一覧"><a href="#あるブランチにある人が提出したコミット一覧" class="headerlink" title="あるブランチにある人が提出したコミット一覧"></a>あるブランチにある人が提出したコミット一覧</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git log --no-merges --author&#x3D;&quot;&lt;user name&gt;&quot; &lt;branch name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="データ初期化用SQL"><a href="#データ初期化用SQL" class="headerlink" title="データ初期化用SQL"></a>データ初期化用SQL</h5><p>V1__Initial.sql</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">SCHEMA</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> xshema<span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> employee <span class="token punctuation">(</span>
+    empId <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    empName <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>empId<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="ある行の内容をどのコミットで失うか"><a href="#ある行の内容をどのコミットで失うか" class="headerlink" title="ある行の内容をどのコミットで失うか"></a>ある行の内容をどのコミットで失うか</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git log -S&lt;string&gt; -- &lt;path&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>または</p>
-<pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">git log -G&lt;regex&gt; -- &lt;path&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>V2__data.sql</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">TRUNCATE</span> <span class="token keyword">TABLE</span> xshema<span class="token punctuation">.</span>employee<span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> xshema<span class="token punctuation">.</span>employee <span class="token punctuation">(</span>empId<span class="token punctuation">,</span> empName<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'scott'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> xshema<span class="token punctuation">.</span>employee <span class="token punctuation">(</span>empId<span class="token punctuation">,</span> empName<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'jack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> xshema<span class="token punctuation">.</span>employee <span class="token punctuation">(</span>empId<span class="token punctuation">,</span> empName<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'tom'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> xshema<span class="token punctuation">.</span>employee <span class="token punctuation">(</span>empId<span class="token punctuation">,</span> empName<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'bill'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="コマンド実行"><a href="#コマンド実行" class="headerlink" title="コマンド実行"></a>コマンド実行</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker-compose</span> -f docker-compose-postgres.yml up -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="GITHUBにソースを用意"><a href="#GITHUBにソースを用意" class="headerlink" title="GITHUBにソースを用意"></a>GITHUBにソースを用意</h4><p><a target="_blank" rel="noopener" href="https://github.com/kevin-hans/DB">https://github.com/kevin-hans/DB</a></p>
 
                 
             </div>
@@ -414,7 +459,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kevin-hans.github.io/2020/03/16/frequently-used-git-cmd/">https://kevin-hans.github.io/2020/03/16/frequently-used-git-cmd/</a>
+                    <a href="https://kevin-hans.github.io/2020/06/24/run-postgresql-in-docker/">https://kevin-hans.github.io/2020/06/24/run-postgresql-in-docker/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -452,8 +497,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
+                                </a>
+                            
+                                <a href="/tags/docker-compose/">
+                                    <span class="chip bg-color">docker-compose</span>
+                                </a>
+                            
+                                <a href="/tags/flyway/">
+                                    <span class="chip bg-color">flyway</span>
                                 </a>
                             
                         </div>
@@ -502,13 +555,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;前へ</div>
             <div class="card">
-                <a href="/2020/06/24/run-postgresql-in-docker/">
+                <a href="/2020/08/10/experience-in-the-past-source-step-count/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="DockerとFlywayを利用して開発環境用Postgresqlを迅速に立ち上げる方法">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="なぜソースファイルおよびメソッドの規模を適当にコントロールするか">
                         
-                        <span class="card-title">DockerとFlywayを利用して開発環境用Postgresqlを迅速に立ち上げる方法</span>
+                        <span class="card-title">なぜソースファイルおよびメソッドの規模を適当にコントロールするか</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -519,7 +572,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
                         </span>
                         <span class="publish-author">
                             
@@ -536,16 +589,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/%E3%82%BD%E3%83%BC%E3%82%B9%E8%A6%8F%E6%A8%A1/">
+                        <span class="chip bg-color">ソース規模</span>
                     </a>
                     
-                    <a href="/tags/docker-compose/">
-                        <span class="chip bg-color">docker-compose</span>
+                    <a href="/tags/%E5%93%81%E8%B3%AA/">
+                        <span class="chip bg-color">品質</span>
                     </a>
                     
-                    <a href="/tags/flyway/">
-                        <span class="chip bg-color">flyway</span>
+                    <a href="/tags/%E3%83%87%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89/">
+                        <span class="chip bg-color">デグレード</span>
+                    </a>
+                    
+                    <a href="/tags/Sonarqube/">
+                        <span class="chip bg-color">Sonarqube</span>
                     </a>
                     
                 </div>
@@ -559,13 +616,13 @@
                 次へ&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/10/secure-apache-in-centos/">
+                <a href="/2020/03/16/frequently-used-git-cmd/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="RedHat/Centos系OSにApacheの設定方法">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="トラブルシューティングによく使われるGIT操作">
                         
-                        <span class="card-title">RedHat/Centos系OSにApacheの設定方法</span>
+                        <span class="card-title">トラブルシューティングによく使われるGIT操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -576,7 +633,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
                             </span>
                         <span class="publish-author">
                             
@@ -593,16 +650,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/apache/">
-                        <span class="chip bg-color">apache</span>
-                    </a>
-                    
-                    <a href="/tags/centos/">
-                        <span class="chip bg-color">centos</span>
-                    </a>
-                    
-                    <a href="/tags/redhat/">
-                        <span class="chip bg-color">redhat</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
