@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Java Runtime docker image 作り方</title>
+      <link href="/2022/03/27/java-runtime-docker-container/"/>
+      <url>/2022/03/27/java-runtime-docker-container/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Java-Runtime-docker-image-作り方"><a href="#Java-Runtime-docker-image-作り方" class="headerlink" title="Java Runtime docker image 作り方"></a>Java Runtime docker image 作り方</h3><p>Spring cloud data flow(batch only mode)を立ち上げることを例にして説明する</p><h3 id="まずはDockerfileを作成"><a href="#まずはDockerfileを作成" class="headerlink" title="まずはDockerfileを作成"></a>まずはDockerfileを作成</h3><p>今回はすでにJarファイルを手に入れるので、jdkではなく、jreを構築する。</p><pre class="line-numbers language-Dockerfile" data-language="Dockerfile"><code class="language-Dockerfile">FROM openjdk:11-jre-slimRUN mkdir -p &#x2F;appWORKDIR &#x2F;appCOPY .&#x2F;spring-cloud-dataflow-server-2.9.2.jar .#EnvENV SPRING_CLOUD_DATAFLOW_FEATURES_STREAMS_ENABLED&#x3D;falseENV SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED&#x3D;falseENV SPRING_CLOUD_DATAFLOW_FEATURES_TASKS_ENABLED&#x3D;trueENV spring_datasource_url&#x3D;jdbc:postgresql:&#x2F;&#x2F;host.docker.internal:5432&#x2F;dbnameENV spring_datasource_username&#x3D;userENV spring_datasource_password&#x3D;passwordENV spring_datasource_driverClassName&#x3D;org.postgresql.DriverENV spring_datasource_initialization_mode&#x3D;alwaysENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;&#x2F;app&#x2F;spring-cloud-dataflow-server-2.9.2.jar&quot;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="build-docker-image"><a href="#build-docker-image" class="headerlink" title="build docker image"></a>build docker image</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> build <span class="token builtin class-name">.</span> -t scdf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="start-docker-container"><a href="#start-docker-container" class="headerlink" title="start docker container"></a>start docker container</h3><p>Dockerfileのenv変数と異なる場合、下記のようにカスタマイズできる。</p><pre class="line-numbers language-Dockerfile" data-language="Dockerfile"><code class="language-Dockerfile">docker run --name&#x3D;spring-cloud-data-flow -d -p 9393:9393 \-e spring_datasource_url&#x3D;&#39;jdbc:postgresql:&#x2F;&#x2F;xxx.xxx.xxx.xxx:5432&#x2F;dbname?currentSchema&#x3D;xxx&#39; \-e spring_datasource_username&#x3D;&#39;xxx&#39; \-e spring_datasource_password&#x3D;&#39;xxx&#39; \scdf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://dataflow.spring.io/docs/recipes/batch/batch-only-mode/">spring cloud data flow-batch only mode</a><br><a href="https://hub.docker.com/_/openjdk">openjdk docker image</a><br><a href="https://stackoverflow.com/questions/30494050/how-do-i-pass-environment-variables-to-docker-containers">how-do-i-pass-environment-variables-to-docker-containers</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> BackEnd </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> docker </tag>
+            
+            <tag> Dockerfile </tag>
+            
+            <tag> spring cloud data flow </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ReactとVueで同じ機能を実現する実装方法比較</title>
       <link href="/2022/02/21/react-vs-vue/"/>
       <url>/2022/02/21/react-vs-vue/</url>
@@ -338,19 +369,6 @@
             <tag> Anonymous Class </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test-password</title>
-      <link href="/2016/03/30/test-password/"/>
-      <url>/2016/03/30/test-password/</url>
-      
-        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="ed7aaf5083b178d5f5e6cb3d17ed3cb4e5bd079377a3ed410411540ac9d6f057">b997c5e6d73526fc7255b64213662410f1ca382c6323ff459861335d993d6222055fe85776ff340404e008adb411be18088c310851d4b105cdb0910f3e81b835d38ca73d3b58e86aa50be5f593a6465be77966a798f4ecb8b87a38d7669b7776776613f286c48a6e48b8d6eb0f52dd65cdd84d80780ac3dd90154b5caf3f8118d79972a8a6452fb46d089ccf60ee0c4ec54014e1d60b1477ecde7ac66e2b4172b0a0061a30defc8d1f99034406889efd2fe3c95fd7193d259fd566383cd37d9524b2945a9fd506a02f760e4de536827146542548bd548a2505348349fa3103b4287156f0f21b324ff1794bf9143aaa6e3a21cd50e351a79b6fd9ba4fbb60a5736845631daf6dde62e070f3dce1092451f7609ba7558914cdfef996ba1d63dd56df8e84452d4a2c65518f3f3cf0552f093f09003fa111d930318952383264adbfe44527e33b547987e2c98d6653456a8b4e3661c996d756342231e53dfb08321ebf5ddbe1a660b495238fc6a5aab67faa0c1952be6476f482f46dfb1b2d7c1a102b770dfa6c8b5078304080dc6f0f86f41fdab5c51f0464d4850e3784d3290c64ab9f818c60895824e9820b8b1f67150adea7ce5e7d61e7dc9bcc2d7a45c44bbea9632e7031dcbc1e0ca65d7d5a23d9795915a7cbba53789dbeb92f5a98693009765d9ccec0c6ce355f1fd9773abc7e776073203db2af718818db115413b82dc36c96c2bee797794cfefd3d1af64d8123dc1f2afff982bfe60fb01c82ae4f36139a5b57ed6787d91315200d59ebbc84fc19e58da2f9d91e40f9e8e9eb515f92db833d73a6bcda8284b30490edae5a4e12c3725c7783ebd513fd1d0760f3b157484bd01b4f26165ba43b82d8a50fe7fd14258fa9cb9a230fc3c454864b40d96e7821da4227852b22a534cbef1cd02736f1c8e518c9378ce763dd88446823b2ab18f453a561b507d157b6b9988f60d2d4707348345cfb8da872cf442dd5f07621e60452ce584f167d9e835ea2c47ff89e7fab64f0c82d88731d089491a4faa3dd176baf2dc3df69b7137a7aaa6c2e265904bea5cb1736d02653bfaec79d133c6f0c830556e53b70c076c39e9476451272a2</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      
-      
       
     </entry>
     
